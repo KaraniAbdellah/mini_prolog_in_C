@@ -28,7 +28,7 @@ typedef struct RuleBase {
 typedef struct NAryTree {
     Facts facts; // Normall this is FactBase
     int numFacts;
-    struct NAryTree **NAryTreeFacts;
+    struct NAryTree *NAryTreeFacts;
 } NAryTree;
 
 
@@ -37,8 +37,8 @@ void returnFacts(Facts *facts);
 void returnRule(Rule *rule);
 void getAllRuleBase(RuleBase *ruleBase1);
 void displayRuleAndFacts(RuleBase ruleBase1, Facts facts);
-char returnConclusion(char *ruleFact, char *fact);
-void getButWithForwardChaining(RuleBase ruleBase1, Facts facts);
+char returnConclusion(Facts *factsOfRule, Facts facts, NAryTree *nAryTree);
+void getGoalWithForwardChaining(RuleBase ruleBase1, Facts facts);
 void initTheKB(Facts *facts, RuleBase *ruleBase1);
 
 

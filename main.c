@@ -30,7 +30,7 @@ int main() {
     displayRuleAndFacts(ruleBase1, facts);
     
     // Make Inference With Forward Chaining
-    getButWithForwardChaining(ruleBase1, facts);
+    getGoalWithForwardChaining(ruleBase1, facts);
     
     return 0;
 }
