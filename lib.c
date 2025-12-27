@@ -129,7 +129,9 @@ void initTheKB(Facts *facts, RuleBase *ruleBase1) {
 
 
 
-
+// We Should Be UnderStand How It Works First [how we attemp to goal]
+// Make NAryTree
+// Find The GOAL
 
 
 
