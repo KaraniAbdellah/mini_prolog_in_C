@@ -1,3 +1,3 @@
-g++ main.c -o main && ./main
+gcc -o main main.c lib.c && ./main
 
 
