@@ -1,6 +1,6 @@
 #ifndef MYHEADER_H
 #define MYHEADER_H
-
+#include <stdbool.h>
 
 
 // EXAMPLE: {4, ['A', 'B', 'C', 'D']}
@@ -28,6 +28,8 @@ typedef struct RuleBase {
 typedef struct NAryTree {
     Facts facts; // Normall this is FactBase
     int numFacts;
+    int numPremise;
+    char *ruleName;
     struct NAryTree *NAryTreeFacts;
 } NAryTree;
 
@@ -40,6 +42,7 @@ void displayRuleAndFacts(RuleBase ruleBase1, Facts facts);
 char returnConclusion(Facts *factsOfRule, Facts facts, NAryTree *nAryTree);
 void getGoalWithForwardChaining(RuleBase ruleBase1, Facts facts);
 void initTheKB(Facts *facts, RuleBase *ruleBase1);
+bool isCharExitInStr(char *str, char c);
 
 
 

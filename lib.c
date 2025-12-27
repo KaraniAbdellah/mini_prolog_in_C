@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "lib.h"
 
 
@@ -68,14 +69,32 @@ void displayRuleAndFacts(RuleBase ruleBase1, Facts facts) {
     printf("---------------------------------------\n");
 }
 
+bool isCharExitInStr(char *str, char c) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == c) return true;
+    }
+    return false;
+}
 
 char returnConclusion(Facts *factsOfRule, Facts facts, NAryTree *nAryTree) {
     printf(">>>>> ruleFact: %s\n", factsOfRule->factsSymbols);
     printf(">>>>> fact: %s\n", facts.factsSymbols);
 
-    for (int i = 0; i < factsOfRule->size; i++) {
-        
+    int sizeOfRuleFacts = factsOfRule->size;
+    int sizeOfFacts = facts.size;
+    int count = 0;
+    for (int i = 0; i < sizeOfRuleFacts; i++) {
+        bool check = isCharExitInStr(facts.factsSymbols, factsOfRule->factsSymbols[i]);
+        if (check) {
+            count++;
+        }
     }
+
+    if (count == sizeOfRuleFacts) {
+        printf("I Will Take This Rule\n");
+    }
+    
+    // Create Another Ary Node With Element[facts, numFacts] 
 }
 
 void getGoalWithForwardChaining(RuleBase ruleBase1, Facts facts) {
@@ -83,6 +102,8 @@ void getGoalWithForwardChaining(RuleBase ruleBase1, Facts facts) {
     NAryTree nAryTree;
     nAryTree.facts = facts;
     nAryTree.numFacts = facts.size;
+    nAryTree.numPremise = 0;
+    nAryTree.ruleName = NULL;
 
     // Start Getting Other Facts Based on Facts
     for (int i = 0; i < ruleBase1.ruleBaseNumber; i++) {
