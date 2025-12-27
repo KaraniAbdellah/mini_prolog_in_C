@@ -39,7 +39,7 @@ void returnFacts(Facts *facts);
 void returnRule(Rule *rule);
 void getAllRuleBase(RuleBase *ruleBase1);
 void displayRuleAndFacts(RuleBase ruleBase1, Facts facts);
-char returnConclusion(Facts *factsOfRule, Facts facts, NAryTree *nAryTree);
+char returnConclusion(Rule rule, Facts facts, NAryTree *nAryTree);
 void getGoalWithForwardChaining(RuleBase ruleBase1, Facts facts);
 void initTheKB(Facts *facts, RuleBase *ruleBase1);
 bool isCharExitInStr(char *str, char c);

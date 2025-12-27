@@ -76,15 +76,20 @@ bool isCharExitInStr(char *str, char c) {
     return false;
 }
 
-char returnConclusion(Facts *factsOfRule, Facts facts, NAryTree *nAryTree) {
-    printf(">>>>> ruleFact: %s\n", factsOfRule->factsSymbols);
+char returnConclusion(Rule rule, Facts facts, NAryTree *nAryTree) {
+    printf(">>>>> ruleFact: %s\n", rule.ruleFacts->factsSymbols);
     printf(">>>>> fact: %s\n", facts.factsSymbols);
 
-    int sizeOfRuleFacts = factsOfRule->size;
-    int sizeOfFacts = facts.size;
+    int sizeOfRuleFacts = rule.ruleFacts->size;
     int count = 0;
+    
+    // Declare Attribut of NAryTree 
+    char *newFacts = NULL;
+    char *ruleName = NULL;
+    int numPremise = 0;
+     
     for (int i = 0; i < sizeOfRuleFacts; i++) {
-        bool check = isCharExitInStr(facts.factsSymbols, factsOfRule->factsSymbols[i]);
+        bool check = isCharExitInStr(facts.factsSymbols, rule.ruleFacts->factsSymbols[i]);
         if (check) {
             count++;
         }
@@ -94,9 +99,11 @@ char returnConclusion(Facts *factsOfRule, Facts facts, NAryTree *nAryTree) {
         printf("I Will Take This Rule\n");
     }
     
-    // Create Another Ary Node With Element[facts, numFacts] 
+    // Create Another Ary Node With Attributs[facts, numFacts, numPremise, ruleName]
+    
 }
 
+// This function make nAryTree
 void getGoalWithForwardChaining(RuleBase ruleBase1, Facts facts) {
     // Init The Root in TREE
     NAryTree nAryTree;
@@ -110,7 +117,7 @@ void getGoalWithForwardChaining(RuleBase ruleBase1, Facts facts) {
         Rule rule = ruleBase1.rules[i];
         for (int j = 0; j < facts.size; i++) {
             // Verify all rules facts exit in Facts
-            returnConclusion(rule.ruleFacts, facts, &nAryTree); /// ruleFacts is pointer
+            returnConclusion(rule, facts, &nAryTree); /// ruleFacts is pointer
         }
     }
 }
